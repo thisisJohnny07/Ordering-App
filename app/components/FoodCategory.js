@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const FoodCategory = () => {
   const navigation = useNavigation();
+  const [selectedCategory, setSelectedCategory] = useState(null); 
 
   const handleCategoryPress = (category) => {
-    navigation.navigate('FoodSelection', { category }); // Navigate to FoodSelection
+    setSelectedCategory(category); 
+    navigation.navigate('FoodSelection', { category });
   };
 
   const categories = ['All', 'Breakfast', 'Drinks', 'Lunch', 'Dinner', 'Snacks'];
@@ -16,10 +18,20 @@ const FoodCategory = () => {
       {categories.map((category, index) => (
         <TouchableOpacity
           key={index}
-          style={styles.categoryButton}
+          style={[
+            styles.categoryButton,
+            selectedCategory === category && styles.categoryButtonSelected, 
+          ]}
           onPress={() => handleCategoryPress(category)}
         >
-          <Text style={styles.categoryText}>{category}</Text>
+          <Text
+            style={[
+              styles.categoryText,
+              selectedCategory === category && styles.categoryTextSelected,
+            ]}
+          >
+            {category}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -48,9 +60,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
   },
+  categoryButtonSelected: {
+    backgroundColor: '#73A4DE', 
+    borderColor: '#73A4DE',
+  },
   categoryText: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#0E315D',
+  },
+  categoryTextSelected: {
+    color: '#FFFFFF', 
   },
 });

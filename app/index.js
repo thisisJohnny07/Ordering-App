@@ -20,14 +20,14 @@ export default function SplashScreen() {
         duration: 1000,
         useNativeDriver: true,
       }).start();
-    }, 4000); // 4 seconds for splash animation
+    }, 4000); 
 
     return () => clearTimeout(timeout);
   }, []);
 
   const handleLogin = () => {
-    setShowLogin(false); // Hide the Login component
-    setShowChooseOrderType(true); // Show the ChooseOrderType overlay
+    setShowLogin(false); 
+    setShowChooseOrderType(true); 
   };
 
   return (
@@ -42,7 +42,7 @@ export default function SplashScreen() {
 
       {showLogin && (
         <Animated.View style={[styles.loginOverlay, { opacity: loginOpacity }]}>
-          <Login onLogin={handleLogin} /> {/* Pass the handleLogin function */}
+          <Login onLogin={handleLogin} /> 
         </Animated.View>
       )}
 

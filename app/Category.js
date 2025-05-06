@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'left',
-    marginTop: 60, 
+    marginTop: 20, 
     
   },
   categoryList: {

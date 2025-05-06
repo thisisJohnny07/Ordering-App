@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Category from './Category'; // Main Category screen
-import FoodSelection from './components/FoodSelection'; // FoodSelection screen
+import Category from './Category'; 
+import FoodSelection from './components/FoodSelection'; 
 
 const Stack = createNativeStackNavigator();
 

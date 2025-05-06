@@ -2,8 +2,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Category from './Category'; // Import Category screen
 import Cart from './Cart'; // Import Cart screen
-import Table from './Table'; // Import Table screen
-
+import Table from './Table'; 
 const Drawer = createDrawerNavigator();
 
 export default function SidebarNavigation() {

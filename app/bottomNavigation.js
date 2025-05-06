@@ -16,17 +16,19 @@ export default function BottomNavigation() {
           let iconName;
 
           if (route.name === 'Category') {
-            iconName = 'list';
+            iconName = 'grid-outline'; 
           } else if (route.name === 'Cart') {
-            iconName = 'cart';
+            iconName = 'cart-outline'; 
           } else if (route.name === 'Table') {
-            iconName = 'restaurant';
+            iconName = 'restaurant-outline'; 
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#313477',
         tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          backgroundColor: '#F9FCFF',},
       })}
     >
       <Tab.Screen name="Category" component={CategoryStack} />

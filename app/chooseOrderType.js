@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { useNavigation } from '@react-navigation/native'; 
 import BottomNavigation from './bottomNavigation';
 
 const ChooseOrderType = () => {
-  const navigation = useNavigation(); // Initialize navigation
+  const navigation = useNavigation();
 
   const handleSelection = () => {
-    navigation.replace('bottomNavigation'); // Navigate to the sidebar navigation
+    navigation.replace('bottomNavigation'); 
   };
 
   return (
