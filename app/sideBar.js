@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity, Modal, Animated, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; 
 
 const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
-   
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
@@ -25,12 +26,14 @@ const styles = StyleSheet.create({
   profileContainer: {
     alignItems: 'center',
     marginBottom: 20,
+
   },
   profileImage: {
     width: 80,
     height: 80,
     borderRadius: 40,
     marginBottom: 10,
+    backgroundColor: '#5C8C9D',
   },
   profileName: {
     fontSize: 18,
@@ -72,25 +75,31 @@ const styles = StyleSheet.create({
 });
 
 export default function Sidebar({ isVisible, toggleSidebar }) {
-  const [slideAnim] = useState(new Animated.Value(-300)); // Start off-screen
+  const [slideAnim] = useState(new Animated.Value(-300)); 
+  const navigation = useNavigation(); 
 
   useEffect(() => {
     if (isVisible) {
-      // Slide in
+      
       Animated.timing(slideAnim, {
-        toValue: 0, // Move into view
+        toValue: 0, 
         duration: 300,
         useNativeDriver: false,
       }).start();
     } else {
-      // Slide out
+    
       Animated.timing(slideAnim, {
-        toValue: -300, // Move off-screen
+        toValue: -300, 
         duration: 300,
         useNativeDriver: false,
       }).start();
     }
   }, [isVisible]);
+
+  const handleLogout = () => {
+    toggleSidebar(); 
+    navigation.navigate('index');
+  };
 
   return (
     <Modal animationType="none" transparent={true} visible={isVisible} onRequestClose={toggleSidebar}>
@@ -99,7 +108,7 @@ export default function Sidebar({ isVisible, toggleSidebar }) {
           {/* Profile Section */}
           <View style={styles.profileContainer}>
             <Image
-              source={{ uri: 'https://via.placeholder.com/80' }} // Replace with actual profile image
+              source={{ uri: 'https://via.placeholder.com/80' }} 
               style={styles.profileImage}
             />
             <Text style={styles.profileName}>Juan Dela Cruz</Text>
@@ -131,7 +140,7 @@ export default function Sidebar({ isVisible, toggleSidebar }) {
           </View>
 
           {/* Logout Button */}
-          <TouchableOpacity style={styles.logoutButton} onPress={toggleSidebar}>
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
             <Text style={styles.logoutButtonText}>Log out</Text>
           </TouchableOpacity>
         </Animated.View>

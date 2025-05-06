@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Sidebar from './sidebar'; // Import the Sidebar component
+import Sidebar from './sidebar';
 
 const styles = StyleSheet.create({
   header: {

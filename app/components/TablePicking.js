@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, Modal } from 'react-native';
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native'; 
 
 const TablePicking = () => {
+  const navigation = useNavigation(); 
   const tables = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   const occupiedTables = [6, 10, 15, 17]; 
   const [selectedTab, setSelectedTab] = useState('All'); 
@@ -26,6 +28,21 @@ const TablePicking = () => {
     }
     return true; 
   });
+
+  const navigateToCategory = () => {
+    closeModal(); // Close the modal
+    navigation.navigate('Category'); // Navigate to Category.js
+  };
+
+  const navigateToCart = () => {
+    closeModal(); // Close the modal
+    navigation.navigate('Cart'); // Navigate to Cart.js
+  };
+
+  const navigateToTable = () => {
+    closeModal(); // Close the modal
+    navigation.navigate('Table'); // Navigate to TablePicking.js
+  };
 
   return (
     <View style={styles.container}>
@@ -94,15 +111,15 @@ const TablePicking = () => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Type of Transaction</Text>
 
-            <TouchableOpacity style={styles.modalButton}>
+            <TouchableOpacity style={styles.modalButton} onPress={navigateToCategory}>
               <Text style={styles.modalButtonText}>Add Order</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.modalButton}>
+            <TouchableOpacity style={styles.modalButton} onPress={navigateToCart}>
               <Text style={styles.modalButtonText}>View Order</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.modalButton}>
+            <TouchableOpacity style={styles.modalButton} onPress={navigateToTable}>
               <Text style={styles.modalButtonText}>Change Table</Text>
             </TouchableOpacity>
 
@@ -185,7 +202,6 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 8,
   },
-  
   tableImage: {
     width: 40,
     height: 40,
